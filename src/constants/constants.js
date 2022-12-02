@@ -8,4 +8,12 @@ const MESSAGE = {
 };
 const PRICE = 1000;
 
-module.exports = { MESSAGE, PRICE };
+const ERROR = {
+  NUMBER_OVERLAP: '[ERROR] 로또 번호는 중복되어선 안됩니다.',
+  NUMBER_COUNT_INVALID: '[ERROR] 로또 번호는 6자리여야 합니다.',
+  NUMBER_ONLY: '[ERROR] 숫자만 입력 해 주세요.',
+  INVALID_MONEY: '[ERROR] 숫자만 입력해주세요.',
+  INVALID_MONEY_UNIT: '[ERROR] 금액의 단위가 맞지 않습니다.',
+};
+
+module.exports = { MESSAGE, PRICE, ERROR };

@@ -1,3 +1,4 @@
+const { ERROR } = require('../constants/constants');
 const OutputView = require('../UI/OutputView');
 
 class Lotto {
@@ -9,10 +10,8 @@ class Lotto {
   }
 
   validate(numbers) {
-    if (new Set(numbers).size !== 6)
-      throw new Error('[ERROR] 로또 번호는 중복이 없어야 한다.');
-    if (numbers.length !== 6)
-      throw new Error('[ERROR] 로또 번호는 6개여야 합니다.');
+    if (new Set(numbers).size !== 6) throw new Error(ERROR.NUMBER_OVERLAP);
+    if (!(numbers.lenth !== 6)) throw new Error(ERROR.NUMBER_COUNT_INVALID);
   }
 
   printLotto() {
