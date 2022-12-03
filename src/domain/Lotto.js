@@ -1,5 +1,4 @@
 const { ERROR } = require('../constants/constants');
-const OutputView = require('../UI/OutputView');
 const makeLottoString = require('../utils/makeLottoString');
 
 class Lotto {
@@ -11,8 +10,9 @@ class Lotto {
   }
 
   validate(numbers) {
+    if (numbers.length > 6 || numbers.length < 6)
+      throw new Error(ERROR.NUMBER_COUNT_INVALID);
     if (new Set(numbers).size !== 6) throw new Error(ERROR.NUMBER_OVERLAP);
-    if (!(numbers.lenth !== 6)) throw new Error(ERROR.NUMBER_COUNT_INVALID);
   }
 
   printLotto() {
@@ -20,7 +20,7 @@ class Lotto {
   }
 
   // 이 로또 정답 확인
-  winCheck(answer, correctCheck, bonusNumber) {
+  winCheck(answer, bonusNumber, correctCheck) {
     return correctCheck(this.#numbers, answer, bonusNumber);
   }
 }

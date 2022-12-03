@@ -56,8 +56,8 @@ class App {
     this.#myLottoList.forEach((lotto) => {
       const result = lotto.winCheck(
         this.#answerNumber,
-        answerNumberCheck,
-        this.#bonusNumber
+        this.#bonusNumber,
+        answerNumberCheck
       );
       correctCount[result] += 1;
     });
