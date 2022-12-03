@@ -6,8 +6,8 @@ const OutputView = {
     Console.print(MESSAGE.COUNT_MY_LOTTO(amount));
   },
 
-  printLotto(lotto) {
-    Console.print(`[${String(lotto).split(',').join(', ')}]`);
+  printLotteries(lottoList) {
+    Console.print(lottoList.join('\n'));
   },
 
   printResult(array, calculateEarnMoney, startMoney) {

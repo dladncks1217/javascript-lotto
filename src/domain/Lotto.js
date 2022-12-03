@@ -1,5 +1,6 @@
 const { ERROR } = require('../constants/constants');
 const OutputView = require('../UI/OutputView');
+const makeLottoString = require('../utils/makeLottoString');
 
 class Lotto {
   #numbers;
@@ -15,7 +16,7 @@ class Lotto {
   }
 
   printLotto() {
-    OutputView.printLotto(this.#numbers);
+    return makeLottoString(this.#numbers);
   }
 
   // 이 로또 정답 확인

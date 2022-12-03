@@ -26,11 +26,13 @@ class App {
   }
 
   purchaseLotto() {
+    const printLotteries = Array.from({ length: this.#lottoCount }, () => 0);
     OutputView.printPurchaseAmount(this.#lottoCount);
     for (let index = 0; index < this.#lottoCount; index++) {
       this.#myLottoList[index] = new Lotto(makeLotto());
-      this.#myLottoList[index].printLotto();
+      printLotteries[index] = this.#myLottoList[index].printLotto();
     }
+    OutputView.printLotteries(printLotteries);
     return this.inputAnswer();
   }
 
