@@ -1,7 +1,9 @@
+const { Random } = require('@woowacourse/mission-utils');
 const answerNumberCheck = require('../src/utils/answerNumberCheck');
 const calculateEarnMoney = require('../src/utils/calculateEarnMoney');
 const correctNumberCount = require('../src/utils/correctNumberCount');
 const inputMoneyVerify = require('../src/utils/inputMonreyVerify');
+const makeLotto = require('../src/utils/makeLotto');
 const makeLottoString = require('../src/utils/makeLottoString');
 const makeStringToLotto = require('../src/utils/makeStringToLotto');
 const verifyAnswerLotto = require('../src/utils/verifyAnswerLotto');
@@ -13,6 +15,13 @@ const testcases = [
 ];
 
 describe('유틸함수 테스트 모음', () => {
+  test('로또 생성 번호 유틸함수 테스트', () => {
+    Random.pickUniqueNumbersInRange = jest.fn();
+    Random.pickUniqueNumbersInRange.mockReturnValueOnce([5, 14, 6, 38, 23, 12]);
+
+    expect(makeLotto()).toEqual([5, 6, 12, 14, 23, 38]);
+  });
+
   test.each(
     testcases.map((value) => {
       return [value];
@@ -30,8 +39,6 @@ describe('유틸함수 테스트 모음', () => {
   test('배열상태 로또 요구사항에 맞는 문자열화', () => {
     expect(makeLottoString([1, 2, 3, 4, 5, 6])).toMatch('[1, 2, 3, 4, 5, 6]');
   });
-
-  // makeLotto 추가
 
   test('구매 로또 금액 예외 발생', () => {
     expect(() => {
