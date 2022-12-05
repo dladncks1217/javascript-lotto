@@ -68,7 +68,7 @@ describe('Application단위 예외 테스트', () => {
     expect(() => {
       const app = new App();
       app.play();
-    }).toThrow('[ERROR] 숫자만 입력해주세요.');
+    }).toThrow('[ERROR] 숫자만 입력 해 주세요.');
   });
 
   test('당첨 번호 입력 예외 테스트 - 문자 입력', () => {
@@ -107,15 +107,27 @@ describe('Application단위 예외 테스트', () => {
     }).toThrow('[ERROR] 로또 번호는 6자리여야 합니다.');
   });
 
-  // test('당첨 번호 입력 예외 테스트 - 보너스 번호 문자 입력', () => {
-  //   mockQuestions(['2000', '1,2,3,4,5,6', 'e']);
-  //   mockRandoms([
-  //     [8, 21, 23, 41, 42, 43],
-  //     [3, 5, 11, 16, 32, 38],
-  //   ]);
-  //   expect(() => {
-  //     const app = new App();
-  //     app.play();
-  //   }).toThrow('[ERROR] 로또 번호는 6자리여야 합니다.');
-  // });
+  test('당첨 번호 입력 예외 테스트 - 보너스 번호 문자 입력', () => {
+    mockQuestions(['2000', '1,2,3,4,5,6', 'e']);
+    mockRandoms([
+      [8, 21, 23, 41, 42, 43],
+      [3, 5, 11, 16, 32, 38],
+    ]);
+    expect(() => {
+      const app = new App();
+      app.play();
+    }).toThrow('[ERROR] 숫자만 입력 해 주세요.');
+  });
+
+  test('당첨 번호 입력 예외 테스트 - 보너스 번호 문자 입력', () => {
+    mockQuestions(['2000', '1,2,3,4,5,6', '5']);
+    mockRandoms([
+      [8, 21, 23, 41, 42, 43],
+      [3, 5, 11, 16, 32, 38],
+    ]);
+    expect(() => {
+      const app = new App();
+      app.play();
+    }).toThrow('[ERROR] 로또 번호는 중복되어선 안됩니다.');
+  });
 });
