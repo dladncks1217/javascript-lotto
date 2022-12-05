@@ -9,6 +9,7 @@ const calculateEarnMoney = require('./utils/calculateEarnMoney');
 const { PRICE } = require('./constants/constants');
 const inputMoneyVerify = require('./utils/inputMonreyVerify');
 const verifyAnswerLotto = require('./utils/verifyAnswerLotto');
+const validateBonusNumber = require('./utils/validateBonusNumber');
 
 class App {
   #lottoCount;
@@ -46,6 +47,7 @@ class App {
 
   inputBonus() {
     InputView.inputBonus((input) => {
+      validateBonusNumber(this.#answerNumber, input);
       this.#bonusNumber = Number(input);
       return this.rankCount();
     });
